@@ -1,0 +1,505 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  min-height: 100vh;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Header Styles */
+.header {
+  background: linear-gradient(135deg, #0066CC 0%, #003D7A 100%);
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.back-btn,
+.filter-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover,
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  flex: 1;
+  text-align: center;
+}
+
+/* Saldo Card */
+.saldo-card {
+  background: linear-gradient(135deg, #0066CC 0%, #003D7A 100%);
+  margin: 16px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.saldo-info {
+  margin-bottom: 12px;
+}
+
+.saldo-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.saldo-amount {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.periode-info {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 12px;
+}
+
+.periode-label {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+}
+
+/* Summary Section */
+.summary-section {
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.summary-card.income {
+  border-left: 3px solid #0F8537;
+}
+
+.summary-card.outcome {
+  border-left: 3px solid #D32F2F;
+}
+
+.summary-icon {
+  margin-bottom: 8px;
+}
+
+.summary-label {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.summary-amount {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.income-text {
+  color: #0F8537;
+}
+
+.outcome-text {
+  color: #D32F2F;
+}
+
+/* Tab Filter */
+.tab-filter {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  border-color: #0066CC;
+  color: #0066CC;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #0066CC 0%, #003D7A 100%);
+  color: white;
+  border-color: #0066CC;
+}
+
+/* Transaction List */
+.transaction-list {
+  padding: 16px;
+}
+
+.date-group {
+  margin-bottom: 24px;
+}
+
+.date-header {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+.transaction-item {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.transaction-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.transaction-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.transaction-icon.income {
+  background: #E8F5E9;
+}
+
+.transaction-icon.outcome {
+  background: #FFEBEE;
+}
+
+.transaction-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.transaction-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.transaction-amount {
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.transaction-amount.income {
+  color: #0F8537;
+}
+
+.transaction-amount.outcome {
+  color: #D32F2F;
+}
+
+.transaction-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-id {
+  font-size: 12px;
+  color: #999;
+  font-family: 'Courier New', monospace;
+}
+
+.transaction-time {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.empty-state svg {
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.empty-state p {
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.transaction-item {
+  animation: fadeIn 0.3s ease;
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 1024px;
+  }
+
+  body {
+    padding: 20px;
+    background: #e8eef5;
+  }
+
+  .container {
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .header {
+    border-radius: 0;
+  }
+
+  .saldo-card {
+    margin: 24px 32px;
+    padding: 32px;
+  }
+
+  .saldo-amount {
+    font-size: 36px;
+  }
+
+  .periode-label {
+    font-size: 14px;
+  }
+
+  .summary-section {
+    padding: 0 32px;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .summary-card {
+    padding: 24px;
+  }
+
+  .summary-label {
+    font-size: 13px;
+  }
+
+  .summary-amount {
+    font-size: 20px;
+  }
+
+  .tab-filter {
+    padding: 0 32px 24px;
+    gap: 12px;
+  }
+
+  .tab-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .transaction-list {
+    padding: 24px 32px;
+  }
+
+  .date-header {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .transaction-item {
+    padding: 20px;
+    margin-bottom: 12px;
+    gap: 16px;
+  }
+
+  .transaction-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .transaction-title {
+    font-size: 16px;
+  }
+
+  .transaction-amount {
+    font-size: 18px;
+  }
+
+  .transaction-category {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .transaction-time {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .summary-section {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .transaction-list {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .saldo-amount {
+    font-size: 24px;
+  }
+
+  .summary-section {
+    grid-template-columns: 1fr;
+  }
+
+  .transaction-title {
+    font-size: 14px;
+  }
+
+  .transaction-amount {
+    font-size: 15px;
+  }
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.status-badge.success {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.status-badge.pending {
+  background: #FFF3E0;
+  color: #F57C00;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
+.loading::after {
+  content: '...';
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+
+  0%,
+  20% {
+    content: '.';
+  }
+
+  40% {
+    content: '..';
+  }
+
+  60%,
+  100% {
+    content: '...';
+  }
+}
